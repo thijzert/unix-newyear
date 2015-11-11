@@ -1,0 +1,50 @@
+body {
+}
+
+.pane
+{
+	width: 100%;
+	height: 100%;
+}
+
+div.clear
+{
+	float: none !important;
+	clear: both;
+}
+
+/* Vertical centering */
+#countdown
+{
+	position: relative;
+}
+#countdown #clock
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	width: 1200px; /* assume 8 digits until 2038 */
+	height: 300px;
+	margin: -150px 0 0 -600px;
+}
+
+
+#countdown #clock
+{
+	font-family: Inconsolata, fixed;
+	font-size: 250px;
+}
+#countdown #clock .digit
+{
+	float: left;
+	width: 150px;
+	height: 300px;
+	line-height: 300px;
+}
+#countdown #clock .digit.empty
+{
+	display: none;
+}
+
+
