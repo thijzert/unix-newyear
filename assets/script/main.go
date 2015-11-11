@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/gopherjs/gopherjs/js"
 	"github.com/gopherjs/jquery"
+	"net/url"
 	"time"
 )
 
@@ -18,7 +19,17 @@ func main() {
 }
 
 func incrementClock() {
-	ct := fmt.Sprintf("%9x", time.Now().Unix())
+	now := time.Now().Unix()
+	ct := fmt.Sprintf("%9x", now)
+
+	hash := js.Global.Get("location").Get("hash").String()
+	opts, _ := url.ParseQuery(hash[1:])
+	fmt.Printf("%+v", opts)
+
+	var animate = true
+	if opts.Get("no-animation") != "" {
+		animate = false
+	}
 
 	jq("#clock .digit").Call("each", func(i int, x *js.Object) {
 		// i'th digit
@@ -29,15 +40,19 @@ func incrementClock() {
 		cd := cur_dig.Text()
 
 		if cd != dg {
-			new_dig := jq(".next", x).SetText(dg)
+			if animate {
+				new_dig := jq(".next", x).SetText(dg)
 
-			new_dig.Call("toggleClass", "current", true).Call("toggleClass", "next", false)
-			cur_dig.Call("toggleClass", "prev", true).Call("toggleClass", "current", false)
+				new_dig.Call("toggleClass", "current", true).Call("toggleClass", "next", false)
+				cur_dig.Call("toggleClass", "prev", true).Call("toggleClass", "current", false)
 
-			js.Global.Get("setTimeout").Invoke(func() {
-				jq(".prev", x).Call("remove")
-				jq(x).Call("append", jq("<div class=\"next\"></div>"))
-			}, 500)
+				js.Global.Get("setTimeout").Invoke(func() {
+					jq(".prev", x).Call("remove")
+					jq(x).Call("append", jq("<div class=\"next\"></div>"))
+				}, 500)
+			} else {
+				cur_dig.SetText(dg)
+			}
 		}
 		if i == 0 && dg != " " {
 			// Happy new Epoch!
