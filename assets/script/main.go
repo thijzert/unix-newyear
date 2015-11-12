@@ -207,14 +207,14 @@ func (s *Spark) Fire(x, y float32, colour, style int) {
 	} else if style == 2 {
 		r = 2.0
 	} else if style == 3 {
-		r = a - rand.Float32()
+		r = 0.5 + 0.5*(a-rand.Float32())
 	} else if style == 4 {
 		if rand.Float32() > 0.5 {
 			s.Colour = 1
-			r = 2.0 - 0.40*rand.Float32()
+			r = 2.0 - 0.25*rand.Float32()
 		} else {
 			s.Colour = 7
-			r = 1.0 - 0.25*rand.Float32()
+			r = 1.0 - 0.2*rand.Float32()
 		}
 	}
 
