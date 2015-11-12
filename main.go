@@ -35,10 +35,17 @@ func mainHandler(w http.ResponseWriter, req *http.Request) {
 		tt[i] = ct[i : i+1]
 	}
 
+	ny := (time.Now().Unix() & 0xffffff000000) + 0x1000000
+	dny := time.Unix(ny, 0).UTC()
+
 	var data = struct {
-		CurrentTime []string
+		CurrentTime  []string
+		NextYearUnix int64
+		NextYear     string
 	}{
-		CurrentTime: tt,
+		CurrentTime:  tt,
+		NextYearUnix: ny,
+		NextYear:     dny.Format("2 January 2006, 15:04:05 UTC"),
 	}
 
 	err = t.ExecuteTemplate(w, "index.html.tmpl", data)
