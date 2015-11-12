@@ -94,12 +94,12 @@ func incrementClock() {
 		}
 	})
 
-	if final_countdown < 16 {
+	if final_countdown <= 16 {
 		timeout := 700
 		if final_countdown == 0 {
 			timeout = 2100
 		}
-		jq("#final-countdown").SetText(fmt.Sprintf("%X", final_countdown)).Call("css", js.M{"color": "#f4f4f0", "opacity": 1.0}).Call("animate", js.M{"color": "#403040", "opacity": 0.0}, timeout)
+		jq("#final-countdown").SetText(fmt.Sprintf("%X", final_countdown)).Call("css", js.M{"color": "#f4f4f0", "zoom": 1.0, "opacity": 1.0}).Call("animate", js.M{"color": "#403040", "zoom": 0.7, "opacity": 0.0}, timeout)
 	}
 }
 
