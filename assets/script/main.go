@@ -26,23 +26,32 @@ func main() {
 }
 
 func incrementClock() {
-	now := time.Now().Unix()
+	now := int(time.Now().Unix())
 	ct := fmt.Sprintf("%9x", now)
 
 	hash := js.Global.Get("location").Get("hash").String()
 	opts, _ := url.ParseQuery(hash[1:])
-	fmt.Printf("%+v", opts)
 
 	var animate = true
 	if opts.Get("no-animation") != "" {
 		animate = false
 	}
 
-	var wait_for string = "000000"
+	var modulus int = 0x100000
 	if opts.Get("wait-for") != "" {
-		wait_for = opts.Get("wait-for")
+		wait_for := opts.Get("wait-for")
+		var nmod int = 0
+		n, er := fmt.Sscanf(wait_for, "%x", &nmod)
+		if n == 1 && nmod > 16 {
+			modulus = nmod
+		} else {
+			fmt.Print(er)
+		}
 	}
-	if ct[len(ct)-len(wait_for):] == wait_for {
+
+	final_countdown := (modulus - (now % modulus)) % modulus
+
+	if final_countdown == 0 {
 		if fireworkShow == nil {
 			fireworkShow = make([]*Firework, 3)
 			for i, _ := range fireworkShow {
@@ -84,6 +93,14 @@ func incrementClock() {
 			jq(x).Call("toggleClass", "empty", false)
 		}
 	})
+
+	if final_countdown < 16 {
+		timeout := 700
+		if final_countdown == 0 {
+			timeout = 2100
+		}
+		jq("#final-countdown").SetText(fmt.Sprintf("%X", final_countdown)).Call("css", js.M{"color": "#f4f4f0", "opacity": 1.0}).Call("animate", js.M{"color": "#403040", "opacity": 0.0}, timeout)
+	}
 }
 
 type Firework struct {
