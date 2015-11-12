@@ -31,3 +31,6 @@ go build
 
 This repository is available under the terms of the [BSD 3-clause license](https://opensource.org/licenses/BSD-3-Clause).
 It is based on the [gopherpen](https://github.com/gopherjs/gopherpen) project template, which is licensed under the [MIT License](https://opensource.org/licenses/MIT). It also includes jQuery, which is also licensed under MIT.
+
+### Credits
+The firework animations are based upon Roy Whittle's fireworks at javascript-fx.com.
