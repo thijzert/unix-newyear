@@ -140,3 +140,37 @@ div.clear
 }
 
 
+
+@media screen and (max-width: 1199px)
+{
+	#countdown #clock
+	{
+		width: 100%;
+		height: 18vw;
+		margin: -9vw 0 0 -50%;
+	}
+	#countdown #clock
+	{
+		font-size: 20vw;
+	}
+	#countdown #clock .digit
+	{
+		width: 12.5%; /* assume 8 digits until 2038 */
+		height: 18vw;
+		line-height: 18vw;
+	}
+	#countdown #clock .digit > .prev
+	{
+		top: -18vw;
+	}
+	#countdown #clock .digit > .current
+	{
+	}
+	#countdown #clock .digit > .next
+	{
+		top: 18vw;
+	}
+}
+
+
+
