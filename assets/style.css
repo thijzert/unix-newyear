@@ -1,0 +1,222 @@
+body {
+	margin: 0;
+	background-color: #100510;
+	color: #dacece;
+}
+
+.pane
+{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+#fork-me
+{
+	margin-top: 150px;
+}
+#fork-me a
+{
+	background-color: #eee;
+	background-image: -webkit-linear-gradient(top,#fcfcfc,#eee);
+	background-image: -moz-linear-gradient(top,#fcfcfc,#eee);
+	background-image: linear-gradient(to bottom,#fcfcfc,#eee);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#eeeeee')";
+
+	height: 26px;
+	display: inline-block;
+	padding: 0 10px 0 6px;
+	vertical-align: middle;
+	cursor: pointer;
+	border: 1px solid #d5d5d5;
+	border-radius: 3px;
+
+	color: #333;
+	font-size: 13px;
+	line-height: 26px;
+	font-weight: bold;
+	font-family: sans-serif;
+	text-decoration: none;
+}
+#fork-me a img
+{
+	max-height: 20px;
+	vertical-align: middle;
+	margin-right: 4px;
+}
+#fork-me a:hover
+{
+	background-color: #ddd;
+	background-image: -webkit-linear-gradient(top,#eee,#ddd);
+	background-image: -moz-linear-gradient(top,#eee,#ddd);
+	background-image: linear-gradient(to bottom,#eee,#ddd);
+	border-color: #ccc;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#dddddd')";
+}
+
+div.clear
+{
+	float: none !important;
+	clear: both;
+}
+
+#firework-canvas
+{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+/* Vertical centering */
+#countdown
+{
+	position: relative;
+}
+#countdown #clock
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	width: 1200px; /* assume 8 digits until 2038 */
+	height: 220px;
+	margin: -110px 0 0 -600px;
+}
+
+#countdown #final-countdown
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	width: 600px;
+	height: 600px;
+	margin: -300px 0 0 -300px;
+
+	font-size: 600px;
+	line-height: 600px;
+	text-align: center;
+}
+
+
+#countdown #clock
+{
+	font-family: Inconsolata, fixed;
+	font-size: 250px;
+}
+#countdown #clock .digit
+{
+	float: left;
+	width: 150px;
+	height: 220px;
+	line-height: 220px;
+	overflow-y: hidden;
+}
+#countdown #clock .digit.empty
+{
+	display: none;
+}
+#countdown #clock .digit > div
+{
+	position: absolute;
+	transition: top 400ms, color 400ms;
+}
+#countdown #clock .digit > .prev
+{
+	top: -220px;
+	color: #100510;
+}
+#countdown #clock .digit > .current
+{
+	top: 0px;
+	color: #dacece;
+}
+#countdown #clock .digit > .next
+{
+	top: 220px;
+	color: #100510;
+}
+
+
+#background
+{
+	padding: 10% 20%;
+}
+#background h1, #background h2
+{
+	font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+}
+#background h1
+{
+	font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+	font-weight: 700;
+	font-style: normal;
+	font-size: 36px;
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+
+	color: rgba(254, 254, 254, 0.8);
+	margin: 0;
+}
+#background h2
+{
+	font-weight: 300;
+	font-style: normal;
+	font-size: 28px;
+	line-height: 1.22;
+	letter-spacing: -0.022em;
+
+	color: rgba(254, 254, 254, 0.44);
+	margin: 0 0 30px 0;
+}
+
+#background p
+{
+	margin: 0;
+	font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 21px;
+	line-height: 1.58;
+	letter-spacing: -0.003em;
+}
+
+
+
+@media screen and (max-width: 1199px)
+{
+	#countdown #clock
+	{
+		width: 100%;
+		height: 18vw;
+		margin: -9vw 0 0 -50%;
+	}
+	#countdown #clock
+	{
+		font-size: 20vw;
+	}
+	#countdown #clock .digit
+	{
+		width: 12.5%; /* assume 8 digits until 2038 */
+		height: 18vw;
+		line-height: 18vw;
+	}
+	#countdown #clock .digit > .prev
+	{
+		top: -18vw;
+	}
+	#countdown #clock .digit > .current
+	{
+		top: 0px;
+	}
+	#countdown #clock .digit > .next
+	{
+		top: 18vw;
+	}
+}
+
+
+
+
