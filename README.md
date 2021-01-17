@@ -8,6 +8,9 @@ As you may know, UNIX date/time is measured as the number of seconds since the 1
 
 For example, UNIX time 0x56000000 was the 21st of September 2015, 13:02:56 UTC.
 
+Here's an example of a UNIX millennium occurring:
+![Happy 0x60, everyone.](https://github.com/thijzert/unix-newyear/blob/master/.readme/moneyshot.gif?raw=true)
+
 ## Building
 
 ### Development Build
