@@ -1,5 +1,7 @@
 # UNIX New Year
 
+Note: this repository is archived; [development will now take place over at Codeberg](https://codeberg.org/nzlt/unix-newyear).
+
 This is a website that lets you celebrate UNIX New Year.
 
 ## Background
